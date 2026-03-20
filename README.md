@@ -4,7 +4,7 @@
 
 > A comprehensive Claude Code plugin for business professionals — meetings, communication, analysis, project management, and decision-making workflows optimized for daily operations.
 
-Inspired by [everything-claude-code](https://github.com/affaan-m/everything-claude-code) (Anthropic Hackathon Winner, 50K+ stars), this plugin extends the same battle-tested architecture from software engineering into **business operations**.
+Inspired by [everything-claude-code](https://github.com/affaan-m/everything-claude-code) by Affaan Mustafa (MIT License, Anthropic Hackathon Winner, 50K+ stars). This plugin extends the same architecture pattern from software engineering into **business operations**. All code in this repository is original — no source code was copied from the original project.
 
 ---
 
