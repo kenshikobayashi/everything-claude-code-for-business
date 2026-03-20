@@ -1,0 +1,34 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "type": "command",
+        "command": "node scripts/hooks/session-start.js",
+        "description": "Load morning context: calendar events, task priorities, and unread message count"
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "mcp__gmail__gmail_send_message|mcp__slack__slack_send_message",
+        "type": "notification",
+        "message": "⚠️ DRAFT POLICY: This action would send a message directly. Please create a draft instead. Use gmail_create_draft or slack_send_message_draft.",
+        "description": "Prevent direct sending — enforce draft-only policy"
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "mcp__gmail__gmail_create_draft|mcp__slack__slack_send_message_draft",
+        "type": "notification",
+        "message": "📝 Draft created. Please review before sending manually.",
+        "description": "Confirm draft creation and remind to review"
+      }
+    ],
+    "Stop": [
+      {
+        "type": "command",
+        "command": "node scripts/hooks/session-end.js",
+        "description": "Save session summary and pending action items"
+      }
+    ]
+  }
+}

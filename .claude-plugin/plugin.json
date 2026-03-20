@@ -1,0 +1,25 @@
+{
+  "name": "everything-claude-code-for-business",
+  "version": "0.1.0",
+  "description": "Complete business operations plugin for Claude Code — meetings, communication, analysis, project management, and decision-making workflows",
+  "author": {
+    "name": "Kenshi Kobayashi"
+  },
+  "homepage": "https://github.com/kenshikobayashi/everything-claude-code-for-business",
+  "repository": "https://github.com/kenshikobayashi/everything-claude-code-for-business",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "business",
+    "productivity",
+    "meetings",
+    "communication",
+    "project-management",
+    "decision-making",
+    "email",
+    "slack",
+    "japanese-business",
+    "workflow",
+    "automation"
+  ]
+}

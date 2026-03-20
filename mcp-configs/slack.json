@@ -1,0 +1,18 @@
+{
+  "description": "Slack MCP configuration",
+  "mcpServers": {
+    "slack": {
+      "type": "connector",
+      "connector_id": "slack"
+    }
+  },
+  "notes": {
+    "usage": "Copy the mcpServers block into your project's .mcp.json or global ~/.claude.json",
+    "commands": [
+      "/briefing — reads Slack mentions and DMs",
+      "/inbox-triage — classifies Slack messages",
+      "/draft-slack — creates message drafts",
+      "/meeting-followup — sends action item notifications"
+    ]
+  }
+}

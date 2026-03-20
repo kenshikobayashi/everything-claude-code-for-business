@@ -1,0 +1,22 @@
+{
+  "description": "Google Workspace MCP configuration — Gmail + Google Calendar",
+  "mcpServers": {
+    "google-calendar": {
+      "type": "connector",
+      "connector_id": "google-calendar"
+    },
+    "gmail": {
+      "type": "connector",
+      "connector_id": "gmail"
+    }
+  },
+  "notes": {
+    "usage": "Copy the mcpServers block into your project's .mcp.json or global ~/.claude.json",
+    "commands": [
+      "/briefing — uses both Calendar and Gmail",
+      "/meeting-prep — uses Calendar",
+      "/inbox-triage — uses Gmail",
+      "/draft-email — uses Gmail (create_draft)"
+    ]
+  }
+}

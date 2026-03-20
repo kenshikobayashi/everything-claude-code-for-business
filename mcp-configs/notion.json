@@ -1,0 +1,19 @@
+{
+  "description": "Notion MCP configuration — task management and knowledge base",
+  "mcpServers": {
+    "notion": {
+      "type": "connector",
+      "connector_id": "notion"
+    }
+  },
+  "notes": {
+    "usage": "Copy the mcpServers block into your project's .mcp.json or global ~/.claude.json",
+    "commands": [
+      "/briefing — reads task database for priorities",
+      "/task-prioritize — re-ranks tasks",
+      "/project-status — aggregates project health",
+      "/meeting-minutes — stores notes in Notion",
+      "/write-sop — creates SOP documents"
+    ]
+  }
+}
