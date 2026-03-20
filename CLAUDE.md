@@ -29,7 +29,7 @@ This is a **Claude Code plugin** providing production-ready agents, skills, rule
 ## File Formats
 
 - **Agents**: `agents/{name}.md` — Markdown with YAML frontmatter (name, description, tools, model)
-- **Skills**: `skills/{name}/SKILL.md` — Markdown with YAML frontmatter (description for invocable; name, description, triggers for knowledge)
+- **Skills**: `skills/{name}/SKILL.md` — Markdown with YAML frontmatter (description for invocable; name, description for knowledge)
 - **Rules**: `rules/{category}/{name}.md` — Markdown with Always/Never/When sections
 - **Naming**: lowercase-with-hyphens (e.g., `skills/meeting-prep/SKILL.md`)
 

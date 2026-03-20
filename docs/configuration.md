@@ -118,16 +118,7 @@ How to customize Everything Claude Code for Business for your workflow, team, an
 
 Enables: schedule awareness, meeting prep, event creation
 
-```json
-{
-  "mcpServers": {
-    "google-calendar": {
-      "type": "connector",
-      "connector_id": "google-calendar"
-    }
-  }
-}
-```
+> **Setup**: Use the **Connectors UI** in Claude Desktop (click **[+]** → **Connectors** → **Google Calendar**), or follow the [Google Calendar MCP server documentation](https://modelcontextprotocol.io) if running via CLI.
 
 **Used by**: `/briefing`, `/meeting-prep`, `/schedule-optimize`, `/review`
 
@@ -135,16 +126,7 @@ Enables: schedule awareness, meeting prep, event creation
 
 Enables: email triage, drafting, sending (via drafts)
 
-```json
-{
-  "mcpServers": {
-    "gmail": {
-      "type": "connector",
-      "connector_id": "gmail"
-    }
-  }
-}
-```
+> **Setup**: Use the **Connectors UI** in Claude Desktop (click **[+]** → **Connectors** → **Gmail**), or follow the [Gmail MCP server documentation](https://modelcontextprotocol.io) if running via CLI.
 
 **Used by**: `/briefing`, `/inbox-triage`, `/draft-email`
 
@@ -152,16 +134,7 @@ Enables: email triage, drafting, sending (via drafts)
 
 Enables: message triage, drafting, channel awareness
 
-```json
-{
-  "mcpServers": {
-    "slack": {
-      "type": "connector",
-      "connector_id": "slack"
-    }
-  }
-}
-```
+> **Setup**: Use the **Connectors UI** in Claude Desktop (click **[+]** → **Connectors** → **Slack**), or follow the [Slack MCP server documentation](https://modelcontextprotocol.io) if running via CLI.
 
 **Used by**: `/briefing`, `/inbox-triage`, `/draft-slack`, `/meeting-followup`
 
@@ -169,16 +142,7 @@ Enables: message triage, drafting, channel awareness
 
 Enables: task management, knowledge base, meeting notes storage
 
-```json
-{
-  "mcpServers": {
-    "notion": {
-      "type": "connector",
-      "connector_id": "notion"
-    }
-  }
-}
-```
+> **Setup**: Use the **Connectors UI** in Claude Desktop (click **[+]** → **Connectors** → **Notion**), or follow the [Notion MCP server documentation](https://modelcontextprotocol.io) if running via CLI.
 
 **Used by**: `/task-prioritize`, `/project-status`, `/meeting-minutes`, `/write-sop`
 
@@ -186,43 +150,27 @@ Enables: task management, knowledge base, meeting notes storage
 
 Enables: issue tracking, project management
 
-```json
-{
-  "mcpServers": {
-    "linear": {
-      "type": "connector",
-      "connector_id": "linear"
-    }
-  }
-}
-```
+> **Setup**: Use the **Connectors UI** in Claude Desktop (click **[+]** → **Connectors** → **Linear**), or follow the [Linear MCP server documentation](https://modelcontextprotocol.io) if running via CLI.
 
 **Used by**: `/project-status`, `/weekly-report`
 
-### Full .mcp.json Example
+### .mcp.json Example (for custom/local MCP servers)
+
+The `.mcp.json` file is used for MCP servers that run as local processes. For first-party connectors (Google Calendar, Gmail, Slack, Notion, Linear), use the **Connectors UI** in Claude Desktop instead.
 
 ```json
 {
   "mcpServers": {
-    "google-calendar": {
-      "type": "connector",
-      "connector_id": "google-calendar"
+    "custom-server": {
+      "command": "npx",
+      "args": ["-y", "@example/mcp-server"],
+      "env": {
+        "API_KEY": "your-api-key"
+      }
     },
-    "gmail": {
-      "type": "connector",
-      "connector_id": "gmail"
-    },
-    "slack": {
-      "type": "connector",
-      "connector_id": "slack"
-    },
-    "notion": {
-      "type": "connector",
-      "connector_id": "notion"
-    },
-    "linear": {
-      "type": "connector",
-      "connector_id": "linear"
+    "another-server": {
+      "command": "node",
+      "args": ["path/to/server.js"]
     }
   }
 }
@@ -304,9 +252,8 @@ Hooks are automated triggers that fire on specific events. They are defined in `
 
 | Field | Description | Example |
 |-------|-------------|---------|
-| `type` | Hook type: `"command"` (run a script) or `"notification"` (show a message) | `"notification"` |
+| `type` | Hook type: `"command"` (run a shell command), `"prompt"` (inject a prompt), `"http"` (call a URL), `"agent"` (run an agent) | `"command"` |
 | `command` | Shell command to execute (for `type: "command"`) | `"node scripts/hooks/session-start.js"` |
-| `message` | Message to display (for `type: "notification"`) | `"Draft created."` |
 | `matcher` | Regex pattern to match tool names (for PreToolUse/PostToolUse) | `"mcp__gmail__.*send"` |
 | `description` | Human-readable description of what the hook does | `"Prevent direct sending"` |
 
@@ -339,15 +286,15 @@ Fires on session start — runs `session-start.js` which outputs the current dat
 
 #### 2. Direct Send Prevention (`PreToolUse`)
 
-Fires before any direct email/Slack send action — shows a warning notification and blocks the send, enforcing the draft-only policy.
+Fires before any direct email/Slack send action — outputs a warning message to enforce the draft-only policy.
 
 ```json
 {
   "PreToolUse": [
     {
       "matcher": "mcp__gmail__gmail_send_message|mcp__slack__slack_send_message",
-      "type": "notification",
-      "message": "⚠️ DRAFT POLICY: This action would send a message directly. Please create a draft instead."
+      "type": "command",
+      "command": "echo '⚠️ DRAFT POLICY: This action would send a message directly. Please create a draft instead.'"
     }
   ]
 }
@@ -355,15 +302,15 @@ Fires before any direct email/Slack send action — shows a warning notification
 
 #### 3. Draft Confirmation (`PostToolUse`)
 
-Fires after a draft is created — confirms the action and reminds the user to review before manual sending.
+Fires after a draft is created — outputs a reminder to review before manual sending.
 
 ```json
 {
   "PostToolUse": [
     {
       "matcher": "mcp__gmail__gmail_create_draft|mcp__slack__slack_send_message_draft",
-      "type": "notification",
-      "message": "📝 Draft created. Please review before sending manually."
+      "type": "command",
+      "command": "echo '📝 Draft created. Please review before sending manually.'"
     }
   ]
 }
@@ -398,15 +345,15 @@ export ECCB_DISABLED_HOOKS="all"
 
 ### Adding Custom Hooks
 
-Edit `hooks/hooks.json` to add your own. Example — auto-translate drafts:
+Edit `hooks/hooks.json` to add your own. Example — reminder after draft creation:
 
 ```json
 {
   "PostToolUse": [
     {
       "matcher": "mcp__gmail__gmail_create_draft",
-      "type": "notification",
-      "message": "💡 Draft created. Would you like me to also create a translated version?"
+      "type": "command",
+      "command": "echo '💡 Draft created. Consider creating a translated version too.'"
     }
   ]
 }

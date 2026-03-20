@@ -1,11 +1,6 @@
 ---
 name: hiring-evaluation
 description: Hiring process patterns — scorecards, interview design, evaluation rubrics
-triggers:
-  - hiring
-  - interview
-  - candidate
-  - 採用
 ---
 
 # Hiring Evaluation Skill

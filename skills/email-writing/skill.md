@@ -1,10 +1,6 @@
 ---
 name: email-writing
 description: Business email composition patterns for English and Japanese
-triggers:
-  - email
-  - draft email
-  - メール
 ---
 
 # Email Writing Skill

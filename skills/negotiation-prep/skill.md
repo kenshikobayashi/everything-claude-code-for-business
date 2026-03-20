@@ -1,10 +1,6 @@
 ---
 name: negotiation-prep
 description: Negotiation preparation — BATNA analysis, issue mapping, concession planning
-triggers:
-  - negotiation
-  - negotiate
-  - 交渉
 ---
 
 # Negotiation Preparation Skill

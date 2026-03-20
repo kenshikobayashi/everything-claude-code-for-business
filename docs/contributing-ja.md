@@ -58,9 +58,7 @@ model: sonnet
 ```markdown
 ---
 name: skill-name
-description: 1行の説明
-triggers:
-  - このスキルを有効化するキーワードやパターン
+description: 1行の説明 — スラッシュコマンドメニューに表示され、Claude がこのスキルを有効化するタイミングの判断に使われます
 ---
 
 # スキル名

@@ -58,9 +58,7 @@ Skills are the unified component type for all functionality — both slash comma
 ```markdown
 ---
 name: skill-name
-description: One-line description
-triggers:
-  - keyword or pattern that activates this skill
+description: One-line description — shown in the slash command menu and used by Claude to decide when to activate this skill
 ---
 
 # Skill Name

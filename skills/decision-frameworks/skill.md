@@ -1,12 +1,6 @@
 ---
 name: decision-frameworks
 description: Structured decision-making frameworks — MECE, 2x2 matrices, decision trees, weighted scoring
-triggers:
-  - decision
-  - decide
-  - choose
-  - compare
-  - 意思決定
 ---
 
 # Decision Frameworks Skill

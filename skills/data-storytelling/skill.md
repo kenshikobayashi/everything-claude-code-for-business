@@ -1,12 +1,6 @@
 ---
 name: data-storytelling
 description: Transform data into compelling narratives — visualization selection, insight extraction
-triggers:
-  - data
-  - chart
-  - visualization
-  - insight
-  - データ
 ---
 
 # Data Storytelling Skill

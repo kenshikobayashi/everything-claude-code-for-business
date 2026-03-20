@@ -1,10 +1,6 @@
 ---
 name: one-on-one
 description: 1-on-1 meeting design — agendas, feedback frameworks, career conversation guides
-triggers:
-  - 1-on-1
-  - one on one
-  - 1on1
 ---
 
 # 1-on-1 Meeting Skill

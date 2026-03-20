@@ -1,11 +1,6 @@
 ---
 name: presentation-design
 description: Presentation structure — story arcs, slide design, data visualization, audience adaptation
-triggers:
-  - presentation
-  - slides
-  - deck
-  - プレゼン
 ---
 
 # Presentation Design Skill

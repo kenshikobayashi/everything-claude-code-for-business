@@ -1,10 +1,6 @@
 ---
 name: minutes-writing
 description: Meeting minutes — decision capture, action items, structured summaries
-triggers:
-  - minutes
-  - meeting notes
-  - 議事録
 ---
 
 # Minutes Writing Skill

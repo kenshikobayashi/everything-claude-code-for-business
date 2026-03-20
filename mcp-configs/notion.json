@@ -1,19 +1,10 @@
 {
-  "description": "Notion MCP configuration — task management and knowledge base",
-  "mcpServers": {
-    "notion": {
-      "type": "connector",
-      "connector_id": "notion"
-    }
+  "description": "Notion MCP — task management and knowledge base. Use Claude Desktop Connectors UI for the easiest setup.",
+  "setup": {
+    "desktop": "Click [+] → Connectors → Notion to connect via OAuth",
+    "cli": "Configure in .mcp.json following the Notion MCP server documentation"
   },
   "notes": {
-    "usage": "Copy the mcpServers block into your project's .mcp.json or global ~/.claude.json",
-    "commands": [
-      "/briefing — reads task database for priorities",
-      "/task-prioritize — re-ranks tasks",
-      "/project-status — aggregates project health",
-      "/meeting-minutes — stores notes in Notion",
-      "/write-sop — creates SOP documents"
-    ]
+    "skills_using_notion": ["/briefing", "/task-prioritize", "/project-status", "/meeting-minutes", "/write-sop"]
   }
 }

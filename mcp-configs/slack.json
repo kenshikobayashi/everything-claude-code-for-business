@@ -1,18 +1,10 @@
 {
-  "description": "Slack MCP configuration",
-  "mcpServers": {
-    "slack": {
-      "type": "connector",
-      "connector_id": "slack"
-    }
+  "description": "Slack MCP. Use Claude Desktop Connectors UI for the easiest setup.",
+  "setup": {
+    "desktop": "Click [+] → Connectors → Slack to connect via OAuth",
+    "cli": "Configure in .mcp.json following the Slack MCP server documentation"
   },
   "notes": {
-    "usage": "Copy the mcpServers block into your project's .mcp.json or global ~/.claude.json",
-    "commands": [
-      "/briefing — reads Slack mentions and DMs",
-      "/inbox-triage — classifies Slack messages",
-      "/draft-slack — creates message drafts",
-      "/meeting-followup — sends action item notifications"
-    ]
+    "skills_using_slack": ["/briefing", "/inbox-triage", "/draft-slack", "/meeting-followup"]
   }
 }

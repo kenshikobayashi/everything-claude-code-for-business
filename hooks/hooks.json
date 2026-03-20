@@ -10,16 +10,16 @@
     "PreToolUse": [
       {
         "matcher": "mcp__gmail__gmail_send_message|mcp__slack__slack_send_message",
-        "type": "notification",
-        "message": "⚠️ DRAFT POLICY: This action would send a message directly. Please create a draft instead. Use gmail_create_draft or slack_send_message_draft.",
+        "type": "command",
+        "command": "echo '⚠️ DRAFT POLICY: This action would send a message directly. Please create a draft instead.'",
         "description": "Prevent direct sending — enforce draft-only policy"
       }
     ],
     "PostToolUse": [
       {
         "matcher": "mcp__gmail__gmail_create_draft|mcp__slack__slack_send_message_draft",
-        "type": "notification",
-        "message": "📝 Draft created. Please review before sending manually.",
+        "type": "command",
+        "command": "echo '📝 Draft created. Please review before sending manually.'",
         "description": "Confirm draft creation and remind to review"
       }
     ],

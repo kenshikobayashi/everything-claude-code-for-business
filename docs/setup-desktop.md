@@ -153,32 +153,25 @@ MCP servers enable Claude to interact with Gmail, Google Calendar, Slack, Notion
 
 **Method B: Configuration File**
 
-Create `.mcp.json` in your project root:
+For non-connector MCP servers (e.g., custom or self-hosted servers), create `.mcp.json` in your project root:
 
 ```json
 {
   "mcpServers": {
-    "google-calendar": {
-      "type": "connector",
-      "connector_id": "google-calendar"
-    },
-    "gmail": {
-      "type": "connector",
-      "connector_id": "gmail"
-    },
-    "slack": {
-      "type": "connector",
-      "connector_id": "slack"
-    },
-    "notion": {
-      "type": "connector",
-      "connector_id": "notion"
+    "example-server": {
+      "command": "npx",
+      "args": ["-y", "@example/mcp-server"],
+      "env": {
+        "API_KEY": "your-api-key"
+      }
     }
   }
 }
 ```
 
-> **Important**: Do NOT use `claude_desktop_config.json` for MCP servers — that file is for the Claude chat app, not Claude Code in Desktop. Use `.mcp.json` (project) or `~/.claude.json` (global) instead.
+> **Note**: For Google Calendar, Gmail, Slack, and Notion, use **Method A (Connectors UI)** above — it handles authentication automatically. The `.mcp.json` file is for servers that run as local processes via `command`/`args`.
+
+> **Important**: Do NOT use `claude_desktop_config.json` for MCP servers — that file is for the Claude chat app, not Claude Code in Desktop. Use `.mcp.json` (project) or `~/.claude/.mcp.json` (global) instead.
 
 ### Step 3: Set Up Your CLAUDE.md
 
@@ -308,7 +301,7 @@ When Claude tries to access an MCP tool for the first time, Desktop will ask for
 ~/.claude/                          # Claude Code config directory
 ~/.claude/settings.json             # Settings
 ~/.claude/skills/                   # Custom skills
-~/.claude.json                      # Global MCP config
+~/.claude/.mcp.json                      # Global MCP config
 
 Project:
 ./CLAUDE.md                         # Project instructions
@@ -319,9 +312,9 @@ Project:
 ### Windows
 
 ```
-%APPDATA%\Claude\                   # Claude Code config directory
-%APPDATA%\Claude\settings.json      # Settings
-%APPDATA%\Claude\skills\            # Custom skills
+%USERPROFILE%\.claude\                   # Claude Code config directory
+%USERPROFILE%\.claude\settings.json      # Settings
+%USERPROFILE%\.claude\skills\            # Custom skills
 
 Project:
 .\CLAUDE.md                         # Project instructions

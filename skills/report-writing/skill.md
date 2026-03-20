@@ -1,12 +1,6 @@
 ---
 name: report-writing
 description: Business report composition — weekly, monthly, executive, and project formats
-triggers:
-  - report
-  - status report
-  - weekly report
-  - 報告
-  - レポート
 ---
 
 # Report Writing Skill

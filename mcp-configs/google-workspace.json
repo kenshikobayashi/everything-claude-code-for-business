@@ -1,22 +1,11 @@
 {
-  "description": "Google Workspace MCP configuration — Gmail + Google Calendar",
-  "mcpServers": {
-    "google-calendar": {
-      "type": "connector",
-      "connector_id": "google-calendar"
-    },
-    "gmail": {
-      "type": "connector",
-      "connector_id": "gmail"
-    }
+  "description": "Google Workspace MCP — Gmail + Google Calendar. Use Claude Desktop Connectors UI for the easiest setup.",
+  "setup": {
+    "desktop": "Click [+] → Connectors → Google Calendar / Gmail to connect via OAuth",
+    "cli": "Configure in .mcp.json following each MCP server's documentation"
   },
   "notes": {
-    "usage": "Copy the mcpServers block into your project's .mcp.json or global ~/.claude.json",
-    "commands": [
-      "/briefing — uses both Calendar and Gmail",
-      "/meeting-prep — uses Calendar",
-      "/inbox-triage — uses Gmail",
-      "/draft-email — uses Gmail (create_draft)"
-    ]
+    "skills_using_calendar": ["/briefing", "/meeting-prep", "/schedule-optimize", "/review"],
+    "skills_using_gmail": ["/briefing", "/inbox-triage", "/draft-email"]
   }
 }

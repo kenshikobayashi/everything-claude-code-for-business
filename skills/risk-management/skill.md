@@ -1,9 +1,6 @@
 ---
 name: risk-management
 description: Risk management patterns — registers, probability-impact matrices, mitigation plans
-triggers:
-  - risk
-  - リスク
 ---
 
 # Risk Management Skill

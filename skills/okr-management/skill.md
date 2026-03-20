@@ -1,11 +1,6 @@
 ---
 name: okr-management
 description: OKR/KPI management — goal setting, key results definition, progress scoring
-triggers:
-  - OKR
-  - KPI
-  - objective
-  - key result
 ---
 
 # OKR Management Skill

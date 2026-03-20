@@ -1,11 +1,6 @@
 ---
 name: project-planning
 description: Project structure — WBS, milestones, dependencies, resource allocation
-triggers:
-  - project plan
-  - WBS
-  - milestone
-  - プロジェクト計画
 ---
 
 # Project Planning Skill

@@ -1,9 +1,6 @@
 ---
 name: slack-etiquette
 description: Effective Slack communication — threading, mentions, tone, and channel norms
-triggers:
-  - slack
-  - message
 ---
 
 # Slack Etiquette Skill

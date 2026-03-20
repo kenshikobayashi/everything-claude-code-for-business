@@ -1,10 +1,6 @@
 ---
 name: facilitation
 description: Discussion facilitation — convergence techniques, consensus building, conflict resolution
-triggers:
-  - facilitate
-  - workshop
-  - ファシリテーション
 ---
 
 # Facilitation Skill

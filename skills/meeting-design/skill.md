@@ -1,10 +1,6 @@
 ---
 name: meeting-design
 description: Meeting architecture — agenda design, time boxing, decision protocols, async alternatives
-triggers:
-  - meeting
-  - agenda
-  - 会議
 ---
 
 # Meeting Design Skill

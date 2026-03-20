@@ -1,13 +1,6 @@
 ---
 name: financial-modeling
 description: Financial analysis patterns — P&L, ROI, unit economics, budget planning
-triggers:
-  - financial
-  - budget
-  - ROI
-  - cost
-  - 予算
-  - 財務
 ---
 
 # Financial Modeling Skill

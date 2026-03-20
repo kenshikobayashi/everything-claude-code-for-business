@@ -1,11 +1,6 @@
 ---
 name: market-research
 description: Market intelligence — TAM/SAM/SOM, Porter's Five Forces, trend analysis
-triggers:
-  - market
-  - TAM
-  - market size
-  - 市場
 ---
 
 # Market Research Skill

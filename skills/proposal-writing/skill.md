@@ -1,10 +1,6 @@
 ---
 name: proposal-writing
 description: Business proposal and plan composition — problem-solution-impact structure with persuasion patterns
-triggers:
-  - proposal
-  - 提案
-  - 企画
 ---
 
 # Proposal Writing Skill

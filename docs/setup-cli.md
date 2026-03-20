@@ -105,36 +105,32 @@ cp agents/chief-of-staff.md ~/.claude/agents/
 
 ### Step 3: Configure MCP Servers
 
-MCP servers connect Claude Code to external services. Configure them in your project's `.mcp.json` or global `~/.claude.json`.
+MCP servers connect Claude Code to external services. Configure them in your project's `.mcp.json`.
 
-**Project-level (`.mcp.json` in your project root):**
+**Easiest method: Use Claude Desktop Connectors UI**
+
+If you use Claude Desktop, click **[+] → Connectors** and connect services through OAuth. The configuration is automatically saved and shared with the CLI.
+
+**Manual configuration (`.mcp.json` in your project root):**
+
+Each MCP server has its own setup. Add entries to `.mcp.json` following the server's documentation:
 
 ```json
 {
   "mcpServers": {
-    "google-calendar": {
-      "type": "connector",
-      "connector_id": "google-calendar"
-    },
-    "gmail": {
-      "type": "connector",
-      "connector_id": "gmail"
-    },
-    "slack": {
-      "type": "connector",
-      "connector_id": "slack"
-    },
-    "notion": {
-      "type": "connector",
-      "connector_id": "notion"
+    "server-name": {
+      "command": "npx",
+      "args": ["-y", "@example/mcp-server-name"]
     }
   }
 }
 ```
 
-**Global (`~/.claude.json`):**
-
-Add the same `mcpServers` block to your global config for cross-project access.
+Refer to each MCP server's documentation for exact configuration:
+- [Google Calendar MCP](https://github.com/anthropics/anthropic-tools)
+- [Gmail MCP](https://github.com/anthropics/anthropic-tools)
+- [Slack MCP](https://github.com/anthropics/anthropic-tools)
+- [Notion MCP](https://github.com/anthropics/anthropic-tools)
 
 ### Step 4: Set Up Your CLAUDE.md
 

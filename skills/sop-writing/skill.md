@@ -1,11 +1,6 @@
 ---
 name: sop-writing
 description: Standard operating procedure creation — process flows, checklists, exception handling
-triggers:
-  - SOP
-  - procedure
-  - process
-  - 手順書
 ---
 
 # SOP Writing Skill

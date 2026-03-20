@@ -1,11 +1,6 @@
 ---
 name: competitive-analysis
 description: Competitive landscape analysis — SWOT, benchmarking, differentiation mapping
-triggers:
-  - competitor
-  - competitive
-  - SWOT
-  - 競合
 ---
 
 # Competitive Analysis Skill
