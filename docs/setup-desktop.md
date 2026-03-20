@@ -52,13 +52,32 @@ Note the full path where you cloned the repository. You'll need it in Step 2.
 
 ### Step 3: Install the Plugin
 
+**Method A: Plugin Manager UI (recommended)**
+
 1. Click the **[+]** button next to the prompt input
 2. Select **Plugins**
-3. Click **Add from path...**
-4. Navigate to the cloned repository folder and select it
-5. The plugin will be installed and its components registered
+3. Click **Add plugin**
+4. Search for `everything-claude-code-for-business` or add the marketplace source:
+   - Marketplace source: `kenshikobayashi/everything-claude-code-for-business`
+5. Click **Install**
 
-After installation, you should see the plugin's commands when you:
+**Method B: Via Prompt (same as CLI)**
+
+Type in the prompt box:
+
+```
+/plugin marketplace add kenshikobayashi/everything-claude-code-for-business
+/plugin install everything-claude-code-for-business@kenshikobayashi/everything-claude-code-for-business
+```
+
+**Method C: From Local Path**
+
+If you cloned the repository locally:
+1. Click **[+]** → **Plugins** → **Manage plugins**
+2. Click **Add from path...**
+3. Navigate to the cloned repository folder and select it
+
+After installation, you should see the plugin's skills when you:
 - Click **[+]** → **Slash commands**
 - Or type `/` in the prompt box
 

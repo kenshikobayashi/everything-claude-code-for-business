@@ -10,40 +10,64 @@ Complete guide to installing and configuring Everything Claude Code for Business
 
 ## Installation
 
-### Step 1: Clone the Repository
+### Step 1: Install via Plugin System (recommended)
+
+Open Claude Code and run the following commands:
+
+```bash
+# 1. Add the repository as a marketplace source
+/plugin marketplace add kenshikobayashi/everything-claude-code-for-business
+
+# 2. Install the plugin
+/plugin install everything-claude-code-for-business@kenshikobayashi/everything-claude-code-for-business
+```
+
+#### Installation Scope
+
+You can control where the plugin is installed using `--scope`:
+
+```bash
+# User scope (default) — available across all projects
+/plugin install everything-claude-code-for-business@kenshikobayashi/everything-claude-code-for-business --scope user
+
+# Project scope — shared with team via version control (.claude/settings.json)
+/plugin install everything-claude-code-for-business@kenshikobayashi/everything-claude-code-for-business --scope project
+
+# Local scope — only for you in this repo (gitignored)
+/plugin install everything-claude-code-for-business@kenshikobayashi/everything-claude-code-for-business --scope local
+```
+
+#### Managing the Plugin
+
+```bash
+/plugin                    # Open interactive plugin manager
+/plugin update ...         # Update to latest version
+/plugin disable ...        # Temporarily disable
+/plugin enable ...         # Re-enable
+/plugin uninstall ...      # Remove completely
+/reload-plugins            # Apply changes without restarting
+```
+
+### Step 2: Alternative — Manual Install
+
+If you prefer not to use the plugin system, you can install manually:
+
+**Option A: Installer Script**
 
 ```bash
 git clone https://github.com/kenshikobayashi/everything-claude-code-for-business.git
 cd everything-claude-code-for-business
-```
-
-### Step 2: Install the Plugin
-
-**Option A: Plugin Marketplace (recommended)**
-
-```bash
-# From within Claude Code
-/plugin install everything-claude-code-for-business
-```
-
-**Option B: Local Install**
-
-```bash
-# Run the installer script
 ./install.sh
 ```
 
-The installer will:
-1. Copy agents to `~/.claude/agents/`
-2. Copy skills to `~/.claude/skills/`
-3. Copy rules to `~/.claude/rules/`
-4. Set up hooks in `~/.claude/hooks/`
+The installer copies agents, skills, rules, and hooks to `~/.claude/`.
 
-**Option C: Manual Install (selective)**
-
-If you only need specific components, copy them individually:
+**Option B: Selective Copy**
 
 ```bash
+git clone https://github.com/kenshikobayashi/everything-claude-code-for-business.git
+cd everything-claude-code-for-business
+
 # Example: install only meeting-related skills
 cp -r skills/meeting-prep/ ~/.claude/skills/
 cp -r skills/meeting-minutes/ ~/.claude/skills/
@@ -178,6 +202,12 @@ claude
 
 ## Updating
 
+**Plugin system:**
+```bash
+/plugin update everything-claude-code-for-business@kenshikobayashi/everything-claude-code-for-business
+```
+
+**Manual install:**
 ```bash
 cd everything-claude-code-for-business
 git pull
@@ -186,6 +216,12 @@ git pull
 
 ## Uninstalling
 
+**Plugin system:**
+```bash
+/plugin uninstall everything-claude-code-for-business@kenshikobayashi/everything-claude-code-for-business
+```
+
+**Manual install:**
 ```bash
 ./install.sh --uninstall
 ```

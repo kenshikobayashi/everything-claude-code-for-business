@@ -10,40 +10,64 @@ Claude Code CLIで「Everything Claude Code for Business」をインストール
 
 ## インストール
 
-### ステップ 1: リポジトリをクローン
+### ステップ 1: プラグインシステムでインストール（推奨）
+
+Claude Code を開いて以下のコマンドを実行します：
+
+```bash
+# 1. リポジトリをマーケットプレイスソースとして追加
+/plugin marketplace add kenshikobayashi/everything-claude-code-for-business
+
+# 2. プラグインをインストール
+/plugin install everything-claude-code-for-business@kenshikobayashi/everything-claude-code-for-business
+```
+
+#### インストールスコープ
+
+`--scope` でプラグインのインストール先を制御できます：
+
+```bash
+# user スコープ（デフォルト）— すべてのプロジェクトで利用可能
+/plugin install everything-claude-code-for-business@kenshikobayashi/everything-claude-code-for-business --scope user
+
+# project スコープ — .claude/settings.json 経由でチームと共有
+/plugin install everything-claude-code-for-business@kenshikobayashi/everything-claude-code-for-business --scope project
+
+# local スコープ — このリポジトリで自分だけ（gitignore対象）
+/plugin install everything-claude-code-for-business@kenshikobayashi/everything-claude-code-for-business --scope local
+```
+
+#### プラグインの管理
+
+```bash
+/plugin                    # インタラクティブなプラグインマネージャーを開く
+/plugin update ...         # 最新バージョンに更新
+/plugin disable ...        # 一時的に無効化
+/plugin enable ...         # 再有効化
+/plugin uninstall ...      # 完全に削除
+/reload-plugins            # 再起動なしで変更を適用
+```
+
+### ステップ 2: 代替方法 — 手動インストール
+
+プラグインシステムを使わない場合は、手動でインストールできます：
+
+**方法A: インストーラースクリプト**
 
 ```bash
 git clone https://github.com/kenshikobayashi/everything-claude-code-for-business.git
 cd everything-claude-code-for-business
-```
-
-### ステップ 2: プラグインをインストール
-
-**方法A: プラグインマーケットプレイス（推奨）**
-
-```bash
-# Claude Code 内で実行
-/plugin install everything-claude-code-for-business
-```
-
-**方法B: ローカルインストール**
-
-```bash
-# インストーラースクリプトを実行
 ./install.sh
 ```
 
-インストーラーは以下を実行します：
-1. エージェントを `~/.claude/agents/` にコピー
-2. スキルを `~/.claude/skills/` にコピー
-3. ルールを `~/.claude/rules/` にコピー
-4. フックを `~/.claude/hooks/` に設定
+インストーラーはエージェント、スキル、ルール、フックを `~/.claude/` にコピーします。
 
-**方法C: 手動インストール（必要なものだけ）**
-
-特定のコンポーネントだけが必要な場合、個別にコピーできます：
+**方法B: 個別コピー**
 
 ```bash
+git clone https://github.com/kenshikobayashi/everything-claude-code-for-business.git
+cd everything-claude-code-for-business
+
 # 例：会議関連のスキルのみインストール
 cp -r skills/meeting-prep/ ~/.claude/skills/
 cp -r skills/meeting-minutes/ ~/.claude/skills/
@@ -178,6 +202,12 @@ claude
 
 ## アップデート
 
+**プラグインシステム:**
+```bash
+/plugin update everything-claude-code-for-business@kenshikobayashi/everything-claude-code-for-business
+```
+
+**手動インストールの場合:**
 ```bash
 cd everything-claude-code-for-business
 git pull
@@ -186,6 +216,12 @@ git pull
 
 ## アンインストール
 
+**プラグインシステム:**
+```bash
+/plugin uninstall everything-claude-code-for-business@kenshikobayashi/everything-claude-code-for-business
+```
+
+**手動インストールの場合:**
 ```bash
 ./install.sh --uninstall
 ```

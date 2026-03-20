@@ -47,25 +47,23 @@ It provides agents, skills, rules, and hooks purpose-built for business professi
 **Option A: Claude Code CLI**
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/kenshikobayashi/everything-claude-code-for-business.git
-cd everything-claude-code-for-business
+# 1. Add the marketplace source
+/plugin marketplace add kenshikobayashi/everything-claude-code-for-business
 
-# 2. Run the installer
-./install.sh
+# 2. Install the plugin
+/plugin install everything-claude-code-for-business@kenshikobayashi/everything-claude-code-for-business
 
 # 3. Start using
-claude
-> /briefing
+/briefing
 ```
 
 **Option B: Claude Desktop**
 
 ```
 1. Open Claude Desktop
-2. Click [+] → Plugins → Add from path
-3. Select the cloned repository folder
-4. Skills appear in the [+] → Slash commands menu
+2. Click [+] → Plugins → Add plugin
+3. Add marketplace: kenshikobayashi/everything-claude-code-for-business
+4. Install the plugin → Skills appear in [+] → Slash commands
 ```
 
 See detailed guides:
@@ -202,25 +200,23 @@ Claude Code（CLI または Desktop）を日常業務で使うビジネスパー
 **方法A: Claude Code CLI**
 
 ```bash
-# 1. リポジトリをクローン
-git clone https://github.com/kenshikobayashi/everything-claude-code-for-business.git
-cd everything-claude-code-for-business
+# 1. マーケットプレイスソースを追加
+/plugin marketplace add kenshikobayashi/everything-claude-code-for-business
 
-# 2. インストーラーを実行
-./install.sh
+# 2. プラグインをインストール
+/plugin install everything-claude-code-for-business@kenshikobayashi/everything-claude-code-for-business
 
 # 3. 使い始める
-claude
-> /briefing
+/briefing
 ```
 
 **方法B: Claude Desktop**
 
 ```
 1. Claude Desktop を開く
-2. [+] → プラグイン → パスから追加
-3. クローンしたリポジトリフォルダを選択
-4. [+] → スラッシュコマンド メニューにスキルが表示される
+2. [+] → プラグイン → プラグインを追加
+3. マーケットプレイス追加: kenshikobayashi/everything-claude-code-for-business
+4. プラグインをインストール → [+] → スラッシュコマンドにスキルが表示される
 ```
 
 詳細ガイド:

@@ -52,13 +52,32 @@ git clone https://github.com/kenshikobayashi/everything-claude-code-for-business
 
 ### ステップ 3: プラグインをインストール
 
+**方法A: プラグインマネージャーUI（推奨）**
+
 1. プロンプト入力欄の横にある **[+]** ボタンをクリック
 2. **Plugins（プラグイン）** を選択
-3. **Add from path...（パスから追加）** をクリック
-4. クローンしたリポジトリフォルダに移動して選択
-5. プラグインがインストールされ、コンポーネントが登録される
+3. **Add plugin（プラグインを追加）** をクリック
+4. `everything-claude-code-for-business` を検索、またはマーケットプレイスソースを追加：
+   - マーケットプレイスソース: `kenshikobayashi/everything-claude-code-for-business`
+5. **Install（インストール）** をクリック
 
-インストール後、以下でコマンドを確認できます：
+**方法B: プロンプト経由（CLIと同じ）**
+
+プロンプトボックスに入力：
+
+```
+/plugin marketplace add kenshikobayashi/everything-claude-code-for-business
+/plugin install everything-claude-code-for-business@kenshikobayashi/everything-claude-code-for-business
+```
+
+**方法C: ローカルパスから**
+
+リポジトリをローカルにクローン済みの場合：
+1. **[+]** → **Plugins** → **Manage plugins（プラグイン管理）** をクリック
+2. **Add from path...（パスから追加）** をクリック
+3. クローンしたリポジトリフォルダに移動して選択
+
+インストール後、以下でスキルを確認できます：
 - **[+]** → **Slash commands（スラッシュコマンド）** をクリック
 - またはプロンプトボックスで `/` を入力
 
