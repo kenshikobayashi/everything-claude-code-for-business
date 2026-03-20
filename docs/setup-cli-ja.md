@@ -6,7 +6,33 @@ Claude Code CLIで「Everything Claude Code for Business」をインストール
 
 - **Claude Code CLI** がインストール済み（[インストールガイド](https://docs.anthropic.com/en/docs/claude-code)）
 - **Node.js 18+**（フックとスクリプトの実行に必要）
-- **Git**（リポジトリのクローンに必要）
+- **Git**（手動インストールの場合のみ必要 — プラグインシステム経由なら不要）
+
+### Git のインストール
+
+手動インストール方法を使う場合に Git が必要です：
+
+**macOS:**
+```bash
+# Xcode Command Line Tools に含まれています
+xcode-select --install
+
+# または Homebrew 経由
+brew install git
+```
+
+**Windows:**
+[git-scm.com/download/win](https://git-scm.com/download/win) からダウンロードしてインストール
+
+**Linux (Ubuntu/Debian):**
+```bash
+sudo apt update && sudo apt install git
+```
+
+インストール確認：
+```bash
+git --version
+```
 
 ## インストール
 

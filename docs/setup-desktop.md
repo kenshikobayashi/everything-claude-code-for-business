@@ -26,62 +26,117 @@ Claude Desktop provides a graphical interface for Claude Code with full support 
 
 - **Claude Desktop** installed (macOS or Windows)
   - Download from [claude.ai/download](https://claude.ai/download)
-- **Git** (for cloning the repository)
+- **Git** (only needed for Method C: local path install — not needed for the plugin system)
 
 ## Installation
 
-### Step 1: Clone the Repository
+### Step 1: Install the Plugin
 
-Open Terminal (macOS) or PowerShell (Windows) and run:
+There are three ways to install. **Method A requires no additional tools** — just Claude Desktop itself.
 
-```bash
-git clone https://github.com/kenshikobayashi/everything-claude-code-for-business.git
-```
+**Method A** and **Method B** do not require Git. If you choose **Method C** (local path install), you'll need Git — see the [What is Git?](#what-is-git) section below.
 
-Note the full path where you cloned the repository. You'll need it in Step 2.
-
-### Step 2: Open as a Project in Claude Desktop
+### Method A: Plugin Manager UI (recommended — no Git required)
 
 1. Open **Claude Desktop**
-2. Open the **Code** tab (left sidebar)
-3. Click **Open folder** or drag the cloned folder into the window
-4. Claude Desktop will automatically detect and load:
-   - `CLAUDE.md` (project instructions)
-   - `.claude/` directory (skills, hooks, rules)
-   - `.mcp.json` (MCP server configurations)
-
-### Step 3: Install the Plugin
-
-**Method A: Plugin Manager UI (recommended)**
-
-1. Click the **[+]** button next to the prompt input
-2. Select **Plugins**
-3. Click **Add plugin**
-4. Search for `everything-claude-code-for-business` or add the marketplace source:
+2. Click the **[+]** button next to the prompt input
+3. Select **Plugins**
+4. Click **Add plugin**
+5. Search for `everything-claude-code-for-business` or add the marketplace source:
    - Marketplace source: `kenshikobayashi/everything-claude-code-for-business`
-5. Click **Install**
+6. Click **Install**
 
-**Method B: Via Prompt (same as CLI)**
+That's it! No additional software needed.
 
-Type in the prompt box:
+### Method B: Via Prompt (no Git required)
+
+1. Open **Claude Desktop**
+2. Type in the prompt box:
 
 ```
 /plugin marketplace add kenshikobayashi/everything-claude-code-for-business
 /plugin install everything-claude-code-for-business@kenshikobayashi/everything-claude-code-for-business
 ```
 
-**Method C: From Local Path**
+### Method C: From Local Path (requires Git)
 
-If you cloned the repository locally:
-1. Click **[+]** → **Plugins** → **Manage plugins**
-2. Click **Add from path...**
-3. Navigate to the cloned repository folder and select it
+This method downloads the repository to your computer first. You need **Git** installed (see [What is Git?](#what-is-git) below).
 
-After installation, you should see the plugin's skills when you:
+1. Open **Terminal** (macOS) or **PowerShell** (Windows)
+2. Run:
+   ```bash
+   git clone https://github.com/kenshikobayashi/everything-claude-code-for-business.git
+   ```
+3. Open **Claude Desktop**
+4. Click **[+]** → **Plugins** → **Manage plugins**
+5. Click **Add from path...**
+6. Navigate to the folder you just downloaded and select it
+
+### Verify Installation
+
+After installation (any method), you should see the plugin's skills when you:
 - Click **[+]** → **Slash commands**
 - Or type `/` in the prompt box
 
-### Step 4: Connect MCP Servers (External Tools)
+Try running `/briefing` to test.
+
+---
+
+<a id="what-is-git"></a>
+
+### What is Git?
+
+> This section is only needed if you chose **Method C** above. Methods A and B do not require Git.
+
+**Git** is a free tool that developers use to download and manage code. Think of it as a "smart download button" — instead of downloading a ZIP file, Git downloads the project and makes it easy to get updates later.
+
+**You don't need to learn Git.** You only need to install it and run one command.
+
+#### Installing Git
+
+**macOS:**
+
+Open the **Terminal** app (search for "Terminal" in Spotlight) and type:
+```bash
+xcode-select --install
+```
+A dialog will appear. Click **Install** and wait for it to finish.
+
+To verify, type:
+```bash
+git --version
+```
+If you see a version number (e.g., `git version 2.39.0`), Git is installed.
+
+**Windows:**
+
+1. Go to [git-scm.com/download/win](https://git-scm.com/download/win)
+2. The download should start automatically
+3. Run the installer — click **Next** on all screens (default settings are fine)
+4. After installation, open **PowerShell** and type:
+   ```bash
+   git --version
+   ```
+   If you see a version number, Git is installed.
+
+#### Using Git (the only command you need)
+
+To download this plugin:
+```bash
+git clone https://github.com/kenshikobayashi/everything-claude-code-for-business.git
+```
+
+This creates a folder called `everything-claude-code-for-business` in your current location. That's the folder you select in Claude Desktop's "Add from path" dialog.
+
+To update the plugin later:
+```bash
+cd everything-claude-code-for-business
+git pull
+```
+
+---
+
+### Step 2: Connect MCP Servers (External Tools)
 
 MCP servers enable Claude to interact with Gmail, Google Calendar, Slack, Notion, and other services.
 
@@ -125,7 +180,7 @@ Create `.mcp.json` in your project root:
 
 > **Important**: Do NOT use `claude_desktop_config.json` for MCP servers — that file is for the Claude chat app, not Claude Code in Desktop. Use `.mcp.json` (project) or `~/.claude.json` (global) instead.
 
-### Step 5: Set Up Your CLAUDE.md
+### Step 3: Set Up Your CLAUDE.md
 
 Create `CLAUDE.md` in your project root (or edit the existing one):
 
@@ -149,7 +204,7 @@ Create `CLAUDE.md` in your project root (or edit the existing one):
 - Draft policy: Always create drafts, never auto-send
 ```
 
-### Step 6: Verify Installation
+### Step 4: Verify Installation
 
 1. In the prompt box, type `/` to see available slash commands
 2. You should see commands like `/briefing`, `/meeting-prep`, `/draft-email`, etc.

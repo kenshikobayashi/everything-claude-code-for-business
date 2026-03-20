@@ -6,7 +6,33 @@ Complete guide to installing and configuring Everything Claude Code for Business
 
 - **Claude Code CLI** installed ([install guide](https://docs.anthropic.com/en/docs/claude-code))
 - **Node.js 18+** (for hooks and scripts)
-- **Git** (for cloning the repository)
+- **Git** (for manual install only — not needed for plugin system install)
+
+### Installing Git
+
+If you don't have Git installed and want to use the manual install method:
+
+**macOS:**
+```bash
+# Git is included with Xcode Command Line Tools
+xcode-select --install
+
+# Or via Homebrew
+brew install git
+```
+
+**Windows:**
+Download and install from [git-scm.com/download/win](https://git-scm.com/download/win)
+
+**Linux (Ubuntu/Debian):**
+```bash
+sudo apt update && sudo apt install git
+```
+
+Verify installation:
+```bash
+git --version
+```
 
 ## Installation
 
