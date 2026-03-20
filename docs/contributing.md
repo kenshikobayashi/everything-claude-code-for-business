@@ -1,6 +1,6 @@
 # Contributing Guide
 
-How to add new agents, skills, commands, and rules to Everything Claude Code for Business.
+How to add new agents, skills, and rules to Everything Claude Code for Business.
 
 ## File Formats
 
@@ -49,9 +49,9 @@ Description of expected output structure.
 
 ### Skills
 
-Skills are domain knowledge packages that enhance Claude's expertise.
+Skills are the unified component type for all functionality — both slash commands (e.g., `/briefing`) and domain knowledge packages (e.g., email-writing). All skills live in `skills/{skill-name}/SKILL.md`.
 
-**Location**: `skills/{skill-name}/skill.md`
+**Location**: `skills/{skill-name}/SKILL.md`
 
 **Format**:
 
@@ -90,46 +90,7 @@ Concrete example
 - [ ] Quality check item 2
 ```
 
-**Naming**: Directory name = skill name, always `skill.md` inside (e.g., `skills/email-writing/skill.md`)
-
----
-
-### Commands
-
-Commands are slash commands that users invoke directly.
-
-**Location**: `commands/`
-
-**Format**:
-
-```markdown
----
-description: One-line description shown in /help and command palette
----
-
-# Command instructions here.
-
-You are executing the /{command-name} command.
-
-## Input
-$ARGUMENTS
-
-## Steps
-1. First, do X
-2. Then, do Y
-3. Finally, produce Z
-
-## Output Format
-Structure the output as:
-- Section 1: ...
-- Section 2: ...
-
-## Constraints
-- Never auto-send messages
-- Always ask for confirmation before external actions
-```
-
-**Naming**: `lowercase-with-hyphens.md` matching the command name (e.g., `meeting-prep.md` → `/meeting-prep`)
+**Naming**: Directory name = skill name, always `SKILL.md` inside (e.g., `skills/email-writing/SKILL.md`)
 
 ---
 
@@ -162,43 +123,37 @@ Rules are always-active guidelines that constrain behavior.
 
 ## Adding a New Component
 
-### 1. New Command
+### 1. New Skill (Slash Command or Domain Knowledge)
 
 ```bash
-# Create the command file
-touch commands/my-command.md
+# Create skill directory and file
+mkdir -p skills/my-skill
+touch skills/my-skill/SKILL.md
 ```
 
 Edit with frontmatter:
 ```markdown
 ---
-description: What this command does in one line
+name: my-skill
+description: What this skill does in one line
 ---
 
-# Command instructions...
+# Skill instructions...
 ```
 
-Test:
+Test (if it's a slash command):
 ```
 claude
-> /my-command "test argument"
+> /my-skill "test argument"
 ```
 
-### 2. New Skill
-
-```bash
-# Create skill directory and file
-mkdir -p skills/my-skill
-touch skills/my-skill/skill.md
-```
-
-### 3. New Agent
+### 2. New Agent
 
 ```bash
 touch agents/my-agent.md
 ```
 
-### 4. New Rule
+### 3. New Rule
 
 ```bash
 touch rules/common/my-rule.md
@@ -214,9 +169,9 @@ Before submitting a PR:
 - [ ] **Frontmatter**: Valid YAML with required fields (`name`, `description`)
 - [ ] **Language**: English + Japanese versions if applicable
 - [ ] **No secrets**: No API keys, tokens, or personal information
-- [ ] **Draft policy**: Commands never auto-send — always create drafts
-- [ ] **Tested**: Command works in both CLI and Desktop
-- [ ] **Documentation**: Updated reference docs if adding new commands/skills
+- [ ] **Draft policy**: Skills never auto-send — always create drafts
+- [ ] **Tested**: Skill works in both CLI and Desktop
+- [ ] **Documentation**: Updated reference docs if adding new skills
 
 ## Code Style
 
@@ -232,8 +187,7 @@ Before submitting a PR:
 [One-line description]
 
 ## Type
-- [ ] New command
-- [ ] New skill
+- [ ] New skill (slash command or domain knowledge)
 - [ ] New agent
 - [ ] New rule
 - [ ] Bug fix

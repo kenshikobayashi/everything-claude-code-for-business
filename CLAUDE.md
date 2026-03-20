@@ -1,17 +1,18 @@
 # Everything Claude Code for Business
 
-This is a **Claude Code plugin** providing production-ready agents, skills, commands, rules, and hooks for business operations.
+This is a **Claude Code plugin** providing production-ready agents, skills, rules, and hooks for business operations.
 
 ## Architecture
 
 - **agents/** — Specialized sub-agents (chief-of-staff, meeting-facilitator, business-analyst, etc.)
-- **skills/** — Domain knowledge (email writing, meeting design, financial modeling, etc.)
-- **commands/** — Slash commands (`/briefing`, `/meeting-prep`, `/draft-email`, etc.)
+- **skills/** — All slash commands and domain knowledge, each in `skills/{name}/SKILL.md`
+  - Invocable skills: `/briefing`, `/meeting-prep`, `/draft-email`, etc. (25 skills)
+  - Knowledge skills: email-writing, meeting-design, financial-modeling, etc. (20 skills)
 - **rules/** — Always-follow guidelines (communication style, confidentiality, Japanese business norms)
-- **hooks/** — Automated triggers (morning context load, draft review gate)
+- **hooks/** — Automated triggers (morning context load, draft send prevention)
 - **contexts/** — Dynamic modes (manager, analyst, communicator, planner)
 
-## Key Commands
+## Key Skills (Slash Commands)
 
 - `/briefing` — Morning briefing (calendar + tasks + inbox + priorities)
 - `/review` — Evening review + next-day planning
@@ -27,11 +28,10 @@ This is a **Claude Code plugin** providing production-ready agents, skills, comm
 
 ## File Formats
 
-- **Agents**: Markdown with YAML frontmatter (name, description, tools, model)
-- **Skills**: `skills/{name}/skill.md` with triggers and patterns
-- **Commands**: Markdown with description frontmatter
-- **Rules**: Markdown with Always/Never/When sections
-- **Naming**: lowercase-with-hyphens (e.g., `meeting-prep.md`)
+- **Agents**: `agents/{name}.md` — Markdown with YAML frontmatter (name, description, tools, model)
+- **Skills**: `skills/{name}/SKILL.md` — Markdown with YAML frontmatter (description for invocable; name, description, triggers for knowledge)
+- **Rules**: `rules/{category}/{name}.md` — Markdown with Always/Never/When sections
+- **Naming**: lowercase-with-hyphens (e.g., `skills/meeting-prep/SKILL.md`)
 
 ## Core Principles
 

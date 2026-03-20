@@ -36,19 +36,18 @@ cd everything-claude-code-for-business
 インストーラーは以下を実行します：
 1. エージェントを `~/.claude/agents/` にコピー
 2. スキルを `~/.claude/skills/` にコピー
-3. コマンドを `~/.claude/commands/` にコピー
-4. ルールを `~/.claude/rules/` にコピー
-5. フックを `~/.claude/hooks/` に設定
+3. ルールを `~/.claude/rules/` にコピー
+4. フックを `~/.claude/hooks/` に設定
 
 **方法C: 手動インストール（必要なものだけ）**
 
 特定のコンポーネントだけが必要な場合、個別にコピーできます：
 
 ```bash
-# 例：会議関連のコマンドのみインストール
-cp commands/meeting-prep.md ~/.claude/commands/
-cp commands/meeting-minutes.md ~/.claude/commands/
-cp commands/meeting-followup.md ~/.claude/commands/
+# 例：会議関連のスキルのみインストール
+cp -r skills/meeting-prep/ ~/.claude/skills/
+cp -r skills/meeting-minutes/ ~/.claude/skills/
+cp -r skills/meeting-followup/ ~/.claude/skills/
 
 # 例：chief-of-staffエージェントのみインストール
 cp agents/chief-of-staff.md ~/.claude/agents/
@@ -135,15 +134,13 @@ claude
 │   ├── meeting-facilitator.md
 │   └── ... (15エージェント)
 ├── skills/
+│   ├── briefing/
+│   │   └── SKILL.md
 │   ├── email-writing/
-│   ├── meeting-design/
-│   ├── market-research/
-│   └── ... (20スキルカテゴリ)
-├── commands/
-│   ├── briefing.md
-│   ├── meeting-prep.md
-│   ├── draft-email.md
-│   └── ... (25コマンド)
+│   │   └── SKILL.md
+│   ├── meeting-prep/
+│   │   └── SKILL.md
+│   └── ... (スラッシュコマンド + ドメイン知識スキル)
 ├── rules/
 │   ├── common/
 │   │   ├── communication-style.md
@@ -197,14 +194,14 @@ git pull
 
 ## トラブルシューティング
 
-### コマンドが表示されない
+### スキルが表示されない
 
-1. ファイルが `~/.claude/commands/` に存在するか確認：
+1. スキルディレクトリが `~/.claude/skills/` に存在するか確認：
    ```bash
-   ls ~/.claude/commands/
+   ls ~/.claude/skills/
    ```
 2. Claude Code のセッションを再起動
-3. コマンドファイルに有効な YAML frontmatter があるか確認
+3. SKILL.md ファイルに有効な YAML frontmatter があるか確認
 
 ### MCPサーバーに接続できない
 
@@ -237,5 +234,5 @@ git pull
 ## 次のステップ
 
 - [設定ガイド](configuration-ja.md) — スキル、ルール、フックのカスタマイズ
-- [スキル・コマンドリファレンス](reference-ja.md) — 全コマンドの詳細ドキュメント
+- [スキルリファレンス](reference-ja.md) — 全スキル・コマンドの詳細ドキュメント
 - [テンプレート集](examples-ja.md) — 役割別CLAUDE.mdテンプレート

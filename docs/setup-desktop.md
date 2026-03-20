@@ -4,7 +4,7 @@ Complete guide to installing and using Everything Claude Code for Business with 
 
 ## Overview
 
-Claude Desktop provides a graphical interface for Claude Code with full support for plugins, skills, commands, MCP servers, and CLAUDE.md project instructions. All features of this plugin work in Desktop, with the exception of agent teams (CLI-only).
+Claude Desktop provides a graphical interface for Claude Code with full support for plugins, skills, MCP servers, and CLAUDE.md project instructions. All features of this plugin work in Desktop, with the exception of agent teams (CLI-only).
 
 ### Desktop vs CLI Feature Comparison
 
@@ -287,8 +287,7 @@ Project:
    ├── .claude-plugin/
    │   └── plugin.json        ← must exist
    ├── agents/                 ← must contain .md files
-   ├── skills/                 ← must contain subdirs with skill.md
-   └── commands/               ← must contain .md files
+   └── skills/                 ← must contain subdirs with SKILL.md
    ```
 2. Check `plugin.json` is valid JSON
 

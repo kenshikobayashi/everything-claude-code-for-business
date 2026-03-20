@@ -20,7 +20,7 @@ While `everything-claude-code` optimizes the developer loop (`plan → tdd → c
 Gather Information → Analyze → Decide → Execute → Report
 ```
 
-It provides agents, skills, commands, rules, and hooks purpose-built for business professionals who use Claude Code (CLI or Desktop) in their daily work.
+It provides agents, skills, rules, and hooks purpose-built for business professionals who use Claude Code (CLI or Desktop) in their daily work.
 
 ### Who is this for?
 
@@ -36,8 +36,7 @@ It provides agents, skills, commands, rules, and hooks purpose-built for busines
 | Component | Count | Description |
 |-----------|-------|-------------|
 | **Agents** | 15 | Specialized sub-agents (chief-of-staff, business-analyst, proposal-writer, etc.) |
-| **Skills** | 20 | Domain knowledge (email writing, meeting design, financial modeling, etc.) |
-| **Commands** | 25 | Slash commands (`/briefing`, `/meeting-prep`, `/draft-email`, etc.) |
+| **Skills** | 45 | All functionality lives in `skills/` — 25 invocable slash commands + 20 domain knowledge skills |
 | **Rules** | 7 | Enforced guidelines (communication style, confidentiality, Japanese business norms) |
 | **Hooks** | 4 | Automated triggers (morning context load, draft send prevention, draft confirmation, session end summary) |
 | **Contexts** | 4 | Dynamic modes (manager, analyst, communicator, planner) |
@@ -66,18 +65,18 @@ claude
 1. Open Claude Desktop
 2. Click [+] → Plugins → Add from path
 3. Select the cloned repository folder
-4. Skills and commands appear in the [+] → Slash commands menu
+4. Skills appear in the [+] → Slash commands menu
 ```
 
 See detailed guides:
 - [CLI Setup Guide](docs/setup-cli.md)
 - [Desktop Setup Guide](docs/setup-desktop.md)
 
-### Command Overview
+### Skill Overview (Slash Commands)
 
 #### Daily Operations
-| Command | Description |
-|---------|-------------|
+| Skill | Description |
+|-------|-------------|
 | `/briefing` | Morning briefing — calendar, tasks, inbox, priorities |
 | `/review` | Evening review — accomplishments, tomorrow's plan |
 | `/inbox-triage` | Bulk triage email + Slack by priority |
@@ -85,15 +84,15 @@ See detailed guides:
 | `/task-prioritize` | Re-rank tasks by urgency and impact |
 
 #### Meetings
-| Command | Description |
-|---------|-------------|
+| Skill | Description |
+|-------|-------------|
 | `/meeting-prep` | Pre-meeting preparation package |
 | `/meeting-minutes` | Generate structured meeting notes |
 | `/meeting-followup` | Extract action items, draft notifications |
 
 #### Documents
-| Command | Description |
-|---------|-------------|
+| Skill | Description |
+|-------|-------------|
 | `/draft-email` | Compose business email with tone control |
 | `/draft-slack` | Compose Slack message with context |
 | `/draft-proposal` | Generate proposal / business plan |
@@ -101,32 +100,38 @@ See detailed guides:
 | `/write-sop` | Create standard operating procedure |
 
 #### Analysis & Strategy
-| Command | Description |
-|---------|-------------|
+| Skill | Description |
+|-------|-------------|
 | `/market-scan` | Market trends and intelligence |
 | `/competitive-brief` | Competitive landscape analysis |
 | `/data-insight` | Data → actionable insights |
 | `/decision-matrix` | Weighted scoring decision support |
 
 #### Project Management
-| Command | Description |
-|---------|-------------|
+| Skill | Description |
+|-------|-------------|
 | `/project-status` | Project progress summary |
 | `/risk-check` | Risk assessment and mitigation |
 | `/weekly-report` | Weekly status report generation |
 | `/okr-update` | OKR / KPI progress update |
 
 #### People & Organization
-| Command | Description |
-|---------|-------------|
+| Skill | Description |
+|-------|-------------|
 | `/one-on-one-prep` | 1-on-1 meeting preparation |
 | `/feedback-draft` | Feedback message drafting |
 
 #### Utilities
-| Command | Description |
-|---------|-------------|
+| Skill | Description |
+|-------|-------------|
 | `/translate-biz` | Business document translation |
 | `/summarize` | Long document summarization |
+
+### Domain Knowledge Skills (20)
+
+These skills are automatically activated by context and enhance Claude's expertise:
+
+`email-writing` · `slack-etiquette` · `presentation-design` · `negotiation-prep` · `meeting-design` · `decision-frameworks` · `facilitation` · `market-research` · `competitive-analysis` · `financial-modeling` · `data-storytelling` · `proposal-writing` · `report-writing` · `minutes-writing` · `sop-writing` · `project-planning` · `risk-management` · `okr-management` · `one-on-one` · `hiring-evaluation`
 
 ### MCP Integrations
 
@@ -147,10 +152,10 @@ This plugin is designed to work with the following MCP servers:
 |-------|-------------|
 | [CLI Setup Guide](docs/setup-cli.md) | Complete CLI installation and configuration |
 | [Desktop Setup Guide](docs/setup-desktop.md) | Claude Desktop installation and configuration |
-| [Skills & Commands Reference](docs/reference.md) | Detailed reference for all skills and commands |
+| [Skills Reference](docs/reference.md) | Detailed reference for all skills and agents |
 | [Configuration Guide](docs/configuration.md) | Customization, MCP setup, hooks, and rules |
 | [Examples](docs/examples.md) | Role-based CLAUDE.md templates and use cases |
-| [Contributing](docs/contributing.md) | How to add new skills, commands, and agents |
+| [Contributing](docs/contributing.md) | How to add new skills and agents |
 
 ### License
 
@@ -170,7 +175,7 @@ MIT
 情報収集 → 分析 → 意思決定 → 実行 → 報告
 ```
 
-Claude Code（CLI または Desktop）を日常業務で使うビジネスパーソンのための、エージェント・スキル・コマンド・ルール・フックを提供します。
+Claude Code（CLI または Desktop）を日常業務で使うビジネスパーソンのための、エージェント・スキル・ルール・フックを提供します。
 
 ### 対象ユーザー
 
@@ -186,8 +191,7 @@ Claude Code（CLI または Desktop）を日常業務で使うビジネスパー
 | コンポーネント | 数 | 説明 |
 |--------------|------|------|
 | **Agents** | 15 | 特化型サブエージェント（chief-of-staff、business-analyst、proposal-writerなど） |
-| **Skills** | 20 | ドメイン知識（メール作成、会議設計、財務モデリングなど） |
-| **Commands** | 25 | スラッシュコマンド（`/briefing`、`/meeting-prep`、`/draft-email`など） |
+| **Skills** | 45 | すべての機能が `skills/` に集約 — 25個のスラッシュコマンド + 20個のドメイン知識スキル |
 | **Rules** | 7 | 強制ガイドライン（コミュニケーション規約、機密管理、日本のビジネス慣習） |
 | **Hooks** | 4 | 自動トリガー（朝のコンテキスト読込、直接送信防止、下書き確認、セッション終了サマリー） |
 | **Contexts** | 4 | 動的モード（マネージャー、アナリスト、コミュニケーター、プランナー） |
@@ -216,18 +220,18 @@ claude
 1. Claude Desktop を開く
 2. [+] → プラグイン → パスから追加
 3. クローンしたリポジトリフォルダを選択
-4. [+] → スラッシュコマンド メニューにスキルとコマンドが表示される
+4. [+] → スラッシュコマンド メニューにスキルが表示される
 ```
 
 詳細ガイド:
 - [CLIセットアップガイド](docs/setup-cli-ja.md)
 - [Desktopセットアップガイド](docs/setup-desktop-ja.md)
 
-### コマンド一覧
+### スキル一覧（スラッシュコマンド）
 
 #### デイリーオペレーション
-| コマンド | 説明 |
-|---------|------|
+| スキル | 説明 |
+|-------|------|
 | `/briefing` | 朝のブリーフィング — カレンダー、タスク、受信トレイ、優先事項 |
 | `/review` | 夕方の振り返り — 成果、明日の計画 |
 | `/inbox-triage` | メール + Slack の一括トリアージ |
@@ -235,15 +239,15 @@ claude
 | `/task-prioritize` | 緊急度・影響度によるタスク再順位付け |
 
 #### 会議
-| コマンド | 説明 |
-|---------|------|
+| スキル | 説明 |
+|-------|------|
 | `/meeting-prep` | 会議事前準備パッケージ |
 | `/meeting-minutes` | 構造化された議事録の生成 |
 | `/meeting-followup` | アクションアイテム抽出、通知下書き |
 
 #### ドキュメント
-| コマンド | 説明 |
-|---------|------|
+| スキル | 説明 |
+|-------|------|
 | `/draft-email` | トーンを制御したビジネスメール作成 |
 | `/draft-slack` | コンテキストを考慮したSlackメッセージ作成 |
 | `/draft-proposal` | 提案書・企画書の生成 |
@@ -251,32 +255,38 @@ claude
 | `/write-sop` | 業務手順書（SOP）の作成 |
 
 #### 分析・戦略
-| コマンド | 説明 |
-|---------|------|
+| スキル | 説明 |
+|-------|------|
 | `/market-scan` | 市場動向・インテリジェンス |
 | `/competitive-brief` | 競合環境分析 |
 | `/data-insight` | データ → 実行可能な示唆 |
 | `/decision-matrix` | 加重スコアリングによる意思決定支援 |
 
 #### プロジェクト管理
-| コマンド | 説明 |
-|---------|------|
+| スキル | 説明 |
+|-------|------|
 | `/project-status` | プロジェクト進捗サマリー |
 | `/risk-check` | リスク評価と対策立案 |
 | `/weekly-report` | 週次ステータスレポート生成 |
 | `/okr-update` | OKR / KPI 進捗更新 |
 
 #### 人材・組織
-| コマンド | 説明 |
-|---------|------|
+| スキル | 説明 |
+|-------|------|
 | `/one-on-one-prep` | 1on1ミーティング準備 |
 | `/feedback-draft` | フィードバックメッセージ下書き |
 
 #### ユーティリティ
-| コマンド | 説明 |
-|---------|------|
+| スキル | 説明 |
+|-------|------|
 | `/translate-biz` | ビジネス文書の翻訳 |
 | `/summarize` | 長文の要約 |
+
+### ドメイン知識スキル（20個）
+
+コンテキストに応じて自動的に有効化され、Claude の専門知識を強化します：
+
+`email-writing` · `slack-etiquette` · `presentation-design` · `negotiation-prep` · `meeting-design` · `decision-frameworks` · `facilitation` · `market-research` · `competitive-analysis` · `financial-modeling` · `data-storytelling` · `proposal-writing` · `report-writing` · `minutes-writing` · `sop-writing` · `project-planning` · `risk-management` · `okr-management` · `one-on-one` · `hiring-evaluation`
 
 ### MCP統合
 
@@ -297,10 +307,10 @@ claude
 |-------|------|
 | [CLIセットアップガイド](docs/setup-cli-ja.md) | CLI版の完全なインストールと設定 |
 | [Desktopセットアップガイド](docs/setup-desktop-ja.md) | Claude Desktop版のインストールと設定 |
-| [スキル・コマンドリファレンス](docs/reference-ja.md) | 全スキル・コマンドの詳細リファレンス |
+| [スキルリファレンス](docs/reference-ja.md) | 全スキル・エージェントの詳細リファレンス |
 | [設定ガイド](docs/configuration-ja.md) | カスタマイズ、MCP設定、フック、ルール |
 | [テンプレート集](docs/examples-ja.md) | 役割別CLAUDE.mdテンプレートとユースケース |
-| [コントリビューション](docs/contributing-ja.md) | 新しいスキル・コマンド・エージェントの追加方法 |
+| [コントリビューション](docs/contributing-ja.md) | 新しいスキル・エージェントの追加方法 |
 
 ### ライセンス
 

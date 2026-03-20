@@ -3,7 +3,7 @@
 /**
  * ECCB Installer
  *
- * Copies agents, skills, commands, rules, and hooks to the Claude config directory.
+ * Copies agents, skills, rules, and hooks to the Claude config directory.
  *
  * Usage:
  *   node scripts/install-apply.js          # Install all components
@@ -25,7 +25,6 @@ const isUpdate = args.includes('--update');
 const components = [
   { name: 'agents', src: 'agents', dest: path.join(claudeDir, 'agents') },
   { name: 'skills', src: 'skills', dest: path.join(claudeDir, 'skills') },
-  { name: 'commands', src: 'commands', dest: path.join(claudeDir, 'commands') },
   { name: 'rules', src: 'rules', dest: path.join(claudeDir, 'rules') },
 ];
 

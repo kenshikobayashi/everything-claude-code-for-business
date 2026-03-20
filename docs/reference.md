@@ -1,6 +1,6 @@
-# Skills & Commands Reference
+# Skills Reference
 
-Complete reference for all agents, skills, and commands in Everything Claude Code for Business.
+Complete reference for all agents and skills (including slash commands) in Everything Claude Code for Business.
 
 ---
 
@@ -262,7 +262,7 @@ Skills are domain knowledge packages that enhance Claude's expertise in specific
 
 ---
 
-## Commands
+## Skills (Slash Commands)
 
 ### Daily Operations
 

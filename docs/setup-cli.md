@@ -36,19 +36,18 @@ cd everything-claude-code-for-business
 The installer will:
 1. Copy agents to `~/.claude/agents/`
 2. Copy skills to `~/.claude/skills/`
-3. Copy commands to `~/.claude/commands/`
-4. Copy rules to `~/.claude/rules/`
-5. Set up hooks in `~/.claude/hooks/`
+3. Copy rules to `~/.claude/rules/`
+4. Set up hooks in `~/.claude/hooks/`
 
 **Option C: Manual Install (selective)**
 
 If you only need specific components, copy them individually:
 
 ```bash
-# Example: install only meeting-related commands
-cp commands/meeting-prep.md ~/.claude/commands/
-cp commands/meeting-minutes.md ~/.claude/commands/
-cp commands/meeting-followup.md ~/.claude/commands/
+# Example: install only meeting-related skills
+cp -r skills/meeting-prep/ ~/.claude/skills/
+cp -r skills/meeting-minutes/ ~/.claude/skills/
+cp -r skills/meeting-followup/ ~/.claude/skills/
 
 # Example: install only the chief-of-staff agent
 cp agents/chief-of-staff.md ~/.claude/agents/
@@ -135,15 +134,13 @@ claude
 │   ├── meeting-facilitator.md
 │   └── ... (15 agents)
 ├── skills/
+│   ├── briefing/
+│   │   └── SKILL.md
 │   ├── email-writing/
-│   ├── meeting-design/
-│   ├── market-research/
-│   └── ... (20 skill categories)
-├── commands/
-│   ├── briefing.md
-│   ├── meeting-prep.md
-│   ├── draft-email.md
-│   └── ... (25 commands)
+│   │   └── SKILL.md
+│   ├── meeting-prep/
+│   │   └── SKILL.md
+│   └── ... (slash commands + domain knowledge skills)
 ├── rules/
 │   ├── common/
 │   │   ├── communication-style.md
@@ -197,14 +194,14 @@ Or manually remove the installed files from `~/.claude/`.
 
 ## Troubleshooting
 
-### Commands not showing up
+### Skills not showing up
 
-1. Check that files are in `~/.claude/commands/`:
+1. Check that skill directories are in `~/.claude/skills/`:
    ```bash
-   ls ~/.claude/commands/
+   ls ~/.claude/skills/
    ```
 2. Restart Claude Code session
-3. Verify the command file has valid YAML frontmatter
+3. Verify the SKILL.md file has valid YAML frontmatter
 
 ### MCP server not connecting
 
@@ -237,5 +234,5 @@ Or manually remove the installed files from `~/.claude/`.
 ## Next Steps
 
 - [Configuration Guide](configuration.md) — Customize skills, rules, and hooks
-- [Skills & Commands Reference](reference.md) — Detailed documentation for every command
+- [Skills Reference](reference.md) — Detailed documentation for every skill and command
 - [Examples](examples.md) — Role-based CLAUDE.md templates
