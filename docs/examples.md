@@ -276,7 +276,7 @@ Ready-to-use CLAUDE.md templates for common business roles. Copy the one closest
 
 ## トリガーワード
 - 「おはよう」「今日」「ブリーフィング」→ /briefing 実行
-- 「振り返り」→ /review 実行
+- 「振り返り」→ /wrapup 実行
 - 「週次レビュー」→ /weekly 実行
 
 ## コミュニケーションルール

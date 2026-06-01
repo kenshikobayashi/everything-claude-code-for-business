@@ -120,7 +120,7 @@ Enables: schedule awareness, meeting prep, event creation
 
 > **Setup**: Use the **Connectors UI** in Claude Desktop (click **[+]** → **Connectors** → **Google Calendar**), or follow the [Google Calendar MCP server documentation](https://modelcontextprotocol.io) if running via CLI.
 
-**Used by**: `/briefing`, `/meeting-prep`, `/schedule-optimize`, `/review`
+**Used by**: `/briefing`, `/meeting-prep`, `/schedule-optimize`, `/wrapup`
 
 ### Gmail
 
@@ -272,7 +272,7 @@ Hooks are automated triggers that fire on specific events. They are defined in `
 
 #### 1. Morning Context Load (`SessionStart`)
 
-Fires on session start — runs `session-start.js` which outputs the current date/time and suggests relevant commands based on time of day (morning → `/briefing`, evening → `/review`).
+Fires on session start — runs `session-start.js` which outputs the current date/time and suggests relevant commands based on time of day (morning → `/briefing`, evening → `/wrapup`).
 
 ```json
 {

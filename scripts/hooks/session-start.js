@@ -42,7 +42,7 @@ if (hour >= 13 && hour < 15) {
 
 // Evening: suggest review
 if (hour >= 17 && hour < 20) {
-  context.suggestions.push('Run /review for your end-of-day summary');
+  context.suggestions.push('Run /wrapup for your end-of-day summary');
 }
 
 // Always suggest inbox if not done recently

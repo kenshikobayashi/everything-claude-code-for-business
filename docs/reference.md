@@ -313,7 +313,7 @@ Morning briefing that aggregates your day's context.
 
 ---
 
-#### `/review`
+#### `/wrapup`
 
 Evening review and next-day planning.
 

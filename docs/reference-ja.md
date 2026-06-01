@@ -224,7 +224,7 @@ Everything Claude Code for Business の全エージェント・スキル（ス�
 
 ---
 
-#### `/review`
+#### `/wrapup`
 
 夕方の振り返りと翌日計画。
 

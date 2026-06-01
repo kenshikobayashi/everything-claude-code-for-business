@@ -2,7 +2,7 @@
 description: Evening review — summarize today's accomplishments, identify carry-overs, and plan tomorrow
 ---
 
-You are executing the `/review` command. Generate an end-of-day review and next-day plan.
+You are executing the `/wrapup` command. Generate an end-of-day review and next-day plan.
 
 ## Steps
 

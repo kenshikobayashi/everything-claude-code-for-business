@@ -76,7 +76,7 @@ See detailed guides:
 | Skill | Description |
 |-------|-------------|
 | `/briefing` | Morning briefing — calendar, tasks, inbox, priorities |
-| `/review` | Evening review — accomplishments, tomorrow's plan |
+| `/wrapup` | Evening review — accomplishments, tomorrow's plan |
 | `/inbox-triage` | Bulk triage email + Slack by priority |
 | `/schedule-optimize` | Suggest schedule improvements |
 | `/task-prioritize` | Re-rank tasks by urgency and impact |
@@ -229,7 +229,7 @@ Claude Code（CLI または Desktop）を日常業務で使うビジネスパー
 | スキル | 説明 |
 |-------|------|
 | `/briefing` | 朝のブリーフィング — カレンダー、タスク、受信トレイ、優先事項 |
-| `/review` | 夕方の振り返り — 成果、明日の計画 |
+| `/wrapup` | 夕方の振り返り — 成果、明日の計画 |
 | `/inbox-triage` | メール + Slack の一括トリアージ |
 | `/schedule-optimize` | スケジュール改善提案 |
 | `/task-prioritize` | 緊急度・影響度によるタスク再順位付け |

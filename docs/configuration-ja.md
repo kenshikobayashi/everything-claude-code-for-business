@@ -92,7 +92,7 @@ Everything Claude Code for Business をワークフロー、チーム、組織�
 
 > **設定方法**: Claude Desktop の**コネクタUI**を使用（**[+]** → **Connectors** → **Google Calendar**）、またはCLI経由の場合は [Google Calendar MCPサーバーのドキュメント](https://modelcontextprotocol.io)を参照してください。
 
-**使用コマンド**: `/briefing`、`/meeting-prep`、`/schedule-optimize`、`/review`
+**使用コマンド**: `/briefing`、`/meeting-prep`、`/schedule-optimize`、`/wrapup`
 
 ### Gmail
 
@@ -237,7 +237,7 @@ Everything Claude Code for Business をワークフロー、チーム、組織�
 
 #### 1. 朝のコンテキスト読み込み (`SessionStart`)
 
-セッション開始時に発火 — `session-start.js` が現在の日時を出力し、時間帯に応じたコマンドを提案（朝 → `/briefing`、夕方 → `/review`）。
+セッション開始時に発火 — `session-start.js` が現在の日時を出力し、時間帯に応じたコマンドを提案（朝 → `/briefing`、夕方 → `/wrapup`）。
 
 ```json
 {

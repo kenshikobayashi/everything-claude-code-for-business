@@ -5,7 +5,7 @@
     "cli": "Configure in .mcp.json following each MCP server's documentation"
   },
   "notes": {
-    "skills_using_calendar": ["/briefing", "/meeting-prep", "/schedule-optimize", "/review"],
+    "skills_using_calendar": ["/briefing", "/meeting-prep", "/schedule-optimize", "/wrapup"],
     "skills_using_gmail": ["/briefing", "/inbox-triage", "/draft-email"]
   }
 }

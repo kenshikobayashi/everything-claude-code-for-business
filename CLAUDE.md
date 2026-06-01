@@ -15,7 +15,7 @@ This is a **Claude Code plugin** providing production-ready agents, skills, rule
 ## Key Skills (Slash Commands)
 
 - `/briefing` — Morning briefing (calendar + tasks + inbox + priorities)
-- `/review` — Evening review + next-day planning
+- `/wrapup` — Evening review + next-day planning
 - `/inbox-triage` — Bulk email + Slack triage
 - `/meeting-prep` — Meeting preparation package
 - `/meeting-minutes` — Structured meeting notes
