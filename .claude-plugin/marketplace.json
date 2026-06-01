@@ -1,0 +1,14 @@
+{
+  "name": "everything-claude-code-for-business",
+  "owner": {
+    "name": "Kenshi Kobayashi"
+  },
+  "plugins": [
+    {
+      "name": "everything-claude-code-for-business",
+      "source": "./",
+      "description": "Complete business operations plugin for Claude Code — meetings, communication, analysis, project management, and decision-making workflows",
+      "version": "0.2.0"
+    }
+  ]
+}

@@ -2,32 +2,44 @@
   "hooks": {
     "SessionStart": [
       {
-        "type": "command",
-        "command": "node scripts/hooks/session-start.js",
-        "description": "Load morning context: calendar events, task priorities, and unread message count"
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/hooks/session-start.js\""
+          }
+        ]
       }
     ],
     "PreToolUse": [
       {
-        "matcher": "mcp__gmail__gmail_send_message|mcp__slack__slack_send_message",
-        "type": "command",
-        "command": "echo '⚠️ DRAFT POLICY: This action would send a message directly. Please create a draft instead.'",
-        "description": "Prevent direct sending — enforce draft-only policy"
+        "matcher": "mcp__.*[Gg]mail.*[Ss]end|mcp__.*[Ss]lack__slack_send_message$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '⚠️ DRAFT POLICY: This action would send a message directly. Create a draft instead.'"
+          }
+        ]
       }
     ],
     "PostToolUse": [
       {
-        "matcher": "mcp__gmail__gmail_create_draft|mcp__slack__slack_send_message_draft",
-        "type": "command",
-        "command": "echo '📝 Draft created. Please review before sending manually.'",
-        "description": "Confirm draft creation and remind to review"
+        "matcher": "mcp__.*[Gg]mail.*create_draft|mcp__.*[Ss]lack.*send_message_draft",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '📝 Draft created. Review before sending manually.'"
+          }
+        ]
       }
     ],
     "Stop": [
       {
-        "type": "command",
-        "command": "node scripts/hooks/session-end.js",
-        "description": "Save session summary and pending action items"
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/hooks/session-end.js\""
+          }
+        ]
       }
     ]
   }

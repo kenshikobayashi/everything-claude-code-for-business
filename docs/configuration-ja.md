@@ -217,10 +217,12 @@ Everything Claude Code for Business をワークフロー、チーム、組織�
 
 | フィールド | 説明 | 例 |
 |----------|------|-----|
-| `type` | フック種類: `"command"`（シェルコマンド実行）、`"prompt"`（プロンプト注入）、`"http"`（URL呼出）、`"agent"`（エージェント実行） | `"command"` |
-| `command` | 実行するシェルコマンド（`type: "command"` 用） | `"node scripts/hooks/session-start.js"` |
-| `matcher` | ツール名にマッチする正規表現パターン（PreToolUse/PostToolUse用） | `"mcp__gmail__.*send"` |
-| `description` | フックの目的を説明するテキスト | `"直接送信を防止"` |
+| `matcher` | ツール名にマッチする正規表現パターン。マッチャーグループのオブジェクトに記述（PreToolUse/PostToolUse用） | `"mcp__.*[Gg]mail.*[Ss]end"` |
+| `hooks` | マッチしたイベントで実行するハンドラーの配列 | `[{ "type": "command", ... }]` |
+| `type` | ハンドラー種類: `"command"`（シェルコマンド実行）、`"prompt"`（プロンプト注入）、`"http"`（URL呼出）、`"agent"`（エージェント実行） | `"command"` |
+| `command` | 実行するシェルコマンド（`type: "command"` 用）。プラグイン相対パスには `${CLAUDE_PLUGIN_ROOT}` を使用 | `"node \"${CLAUDE_PLUGIN_ROOT}/scripts/hooks/session-start.js\""` |
+
+> **スキーマ注記:** 各イベントは*マッチャーグループ*の配列に対応し、各グループはハンドラーの `hooks` 配列を持つ。`SessionStart` と `Stop` は `matcher` を取らない。`description` フィールドはスキーマに含まれず無視される。
 
 ### フックイベント
 
@@ -241,8 +243,12 @@ Everything Claude Code for Business をワークフロー、チーム、組織�
 {
   "SessionStart": [
     {
-      "type": "command",
-      "command": "node scripts/hooks/session-start.js"
+      "hooks": [
+        {
+          "type": "command",
+          "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/hooks/session-start.js\""
+        }
+      ]
     }
   ]
 }
@@ -256,9 +262,13 @@ Everything Claude Code for Business をワークフロー、チーム、組織�
 {
   "PreToolUse": [
     {
-      "matcher": "mcp__gmail__gmail_send_message|mcp__slack__slack_send_message",
-      "type": "command",
-      "command": "echo '⚠️ 下書きポリシー: この操作はメッセージを直接送信します。代わりに下書きを作成してください。'"
+      "matcher": "mcp__.*[Gg]mail.*[Ss]end|mcp__.*[Ss]lack__slack_send_message$",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "echo '⚠️ 下書きポリシー: この操作はメッセージを直接送信します。代わりに下書きを作成してください。'"
+        }
+      ]
     }
   ]
 }
@@ -272,9 +282,13 @@ Everything Claude Code for Business をワークフロー、チーム、組織�
 {
   "PostToolUse": [
     {
-      "matcher": "mcp__gmail__gmail_create_draft|mcp__slack__slack_send_message_draft",
-      "type": "command",
-      "command": "echo '📝 下書きが作成されました。送信前にご確認ください。'"
+      "matcher": "mcp__.*[Gg]mail.*create_draft|mcp__.*[Ss]lack.*send_message_draft",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "echo '📝 下書きが作成されました。送信前にご確認ください。'"
+        }
+      ]
     }
   ]
 }
@@ -288,8 +302,12 @@ Everything Claude Code for Business をワークフロー、チーム、組織�
 {
   "Stop": [
     {
-      "type": "command",
-      "command": "node scripts/hooks/session-end.js"
+      "hooks": [
+        {
+          "type": "command",
+          "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/hooks/session-end.js\""
+        }
+      ]
     }
   ]
 }

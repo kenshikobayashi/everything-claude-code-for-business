@@ -252,10 +252,12 @@ Hooks are automated triggers that fire on specific events. They are defined in `
 
 | Field | Description | Example |
 |-------|-------------|---------|
-| `type` | Hook type: `"command"` (run a shell command), `"prompt"` (inject a prompt), `"http"` (call a URL), `"agent"` (run an agent) | `"command"` |
-| `command` | Shell command to execute (for `type: "command"`) | `"node scripts/hooks/session-start.js"` |
-| `matcher` | Regex pattern to match tool names (for PreToolUse/PostToolUse) | `"mcp__gmail__.*send"` |
-| `description` | Human-readable description of what the hook does | `"Prevent direct sending"` |
+| `matcher` | Regex pattern to match tool names, on the matcher-group object (for PreToolUse/PostToolUse) | `"mcp__.*[Gg]mail.*[Ss]end"` |
+| `hooks` | Array of hook handlers to run for the matched event | `[{ "type": "command", ... }]` |
+| `type` | Handler type: `"command"` (run a shell command), `"prompt"` (inject a prompt), `"http"` (call a URL), `"agent"` (run an agent) | `"command"` |
+| `command` | Shell command to execute (for `type: "command"`); use `${CLAUDE_PLUGIN_ROOT}` for plugin-relative paths | `"node \"${CLAUDE_PLUGIN_ROOT}/scripts/hooks/session-start.js\""` |
+
+> **Schema note:** Each event maps to an array of *matcher groups*, and each group holds a `hooks` array of handlers. `SessionStart` and `Stop` take no `matcher`. `description` fields are not part of the schema and are ignored.
 
 ### Hook Events
 
@@ -276,9 +278,12 @@ Fires on session start — runs `session-start.js` which outputs the current dat
 {
   "SessionStart": [
     {
-      "type": "command",
-      "command": "node scripts/hooks/session-start.js",
-      "description": "Load morning context: calendar events, task priorities, and unread message count"
+      "hooks": [
+        {
+          "type": "command",
+          "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/hooks/session-start.js\""
+        }
+      ]
     }
   ]
 }
@@ -292,9 +297,13 @@ Fires before any direct email/Slack send action — outputs a warning message to
 {
   "PreToolUse": [
     {
-      "matcher": "mcp__gmail__gmail_send_message|mcp__slack__slack_send_message",
-      "type": "command",
-      "command": "echo '⚠️ DRAFT POLICY: This action would send a message directly. Please create a draft instead.'"
+      "matcher": "mcp__.*[Gg]mail.*[Ss]end|mcp__.*[Ss]lack__slack_send_message$",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "echo '⚠️ DRAFT POLICY: This action would send a message directly. Create a draft instead.'"
+        }
+      ]
     }
   ]
 }
@@ -308,9 +317,13 @@ Fires after a draft is created — outputs a reminder to review before manual se
 {
   "PostToolUse": [
     {
-      "matcher": "mcp__gmail__gmail_create_draft|mcp__slack__slack_send_message_draft",
-      "type": "command",
-      "command": "echo '📝 Draft created. Please review before sending manually.'"
+      "matcher": "mcp__.*[Gg]mail.*create_draft|mcp__.*[Ss]lack.*send_message_draft",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "echo '📝 Draft created. Review before sending manually.'"
+        }
+      ]
     }
   ]
 }
@@ -324,8 +337,12 @@ Fires when the session ends — runs `session-end.js` to save a session summary.
 {
   "Stop": [
     {
-      "type": "command",
-      "command": "node scripts/hooks/session-end.js"
+      "hooks": [
+        {
+          "type": "command",
+          "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/hooks/session-end.js\""
+        }
+      ]
     }
   ]
 }
@@ -351,9 +368,13 @@ Edit `hooks/hooks.json` to add your own. Example — reminder after draft creati
 {
   "PostToolUse": [
     {
-      "matcher": "mcp__gmail__gmail_create_draft",
-      "type": "command",
-      "command": "echo '💡 Draft created. Consider creating a translated version too.'"
+      "matcher": "mcp__.*[Gg]mail.*create_draft",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "echo '💡 Draft created. Consider creating a translated version too.'"
+        }
+      ]
     }
   ]
 }
